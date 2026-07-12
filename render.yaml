@@ -1,0 +1,26 @@
+# Single-container app + Neon Postgres
+# https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: tenantforge
+    runtime: docker
+    dockerfilePath: ./docker/Dockerfile
+    dockerContext: .
+    plan: free
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_ACCESS_SECRET
+        generateValue: true
+      - key: JWT_REFRESH_SECRET
+        generateValue: true
+      - key: BILLING_MOCK_MODE
+        value: "true"
+      - key: SEED_ON_START
+        value: "false"
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "8080"
