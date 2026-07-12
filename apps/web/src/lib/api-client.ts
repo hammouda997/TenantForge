@@ -1,15 +1,4 @@
 export const API_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000/api/v1';
-
-export function getWsUrl(): string {
-  if (process.env.NEXT_PUBLIC_WS_URL) {
-    return process.env.NEXT_PUBLIC_WS_URL;
-  }
-  if (typeof window !== 'undefined') {
-    return window.location.origin;
-  }
-  return 'http://localhost:4000';
-}
-
 export const WS_URL = process.env.NEXT_PUBLIC_WS_URL ?? 'http://localhost:4000';
 export const ORG_HEADER = 'x-organization-id';
 

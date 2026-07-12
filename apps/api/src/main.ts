@@ -13,9 +13,7 @@ async function bootstrap(): Promise<void> {
   app.use(helmet());
   app.use(cookieParser());
   app.enableCors({
-    origin: process.env.CORS_ORIGIN
-      ? process.env.CORS_ORIGIN.split(',')
-      : true,
+    origin: process.env.CORS_ORIGIN?.split(',') ?? ['http://localhost:3000'],
     credentials: true,
   });
 
@@ -41,7 +39,7 @@ async function bootstrap(): Promise<void> {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api/docs', app, document);
 
-  const port = Number(process.env.API_PORT ?? process.env.PORT ?? 4000);
+  const port = Number(process.env.PORT ?? 4000);
   await app.listen(port);
   logger.log(`API running on http://localhost:${port}`);
   logger.log(`Swagger docs at http://localhost:${port}/api/docs`);

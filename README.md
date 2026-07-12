@@ -205,27 +205,21 @@ Interactive docs: http://localhost:4000/api/docs
 
 ## Deployment
 
-**Live demo setup:** one Docker container + [Neon](https://neon.tech) Postgres (no Railway). Full guide: [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)
-
 ```bash
-docker build -f docker/Dockerfile -t tenantforge .
-
-docker run --rm -p 8080:8080 \
-  -e DATABASE_URL="postgresql://...@...neon.tech/neondb?sslmode=require" \
-  -e JWT_ACCESS_SECRET="change-me-access-secret-min-32-chars" \
-  -e JWT_REFRESH_SECRET="change-me-refresh-secret-min-32-chars" \
-  -e BILLING_MOCK_MODE=true \
-  tenantforge
+# Full local stack
+docker compose -f docker/docker-compose.yml up --build
 ```
 
-Or connect GitHub → [Render](https://render.com) Blueprint (`render.yaml`) and paste your Neon `DATABASE_URL`.
+Production pattern:
 
-Local apps only (Postgres/Redis via Compose):
+1. Managed PostgreSQL + Redis  
+2. Configure env from `.env.example` files  
+3. `pnpm db:migrate` against production DB  
+4. Deploy `apps/api` and `apps/web` separately  
 
-```bash
-docker compose -f docker/docker-compose.yml up postgres redis -d
-pnpm db:migrate && pnpm db:seed && pnpm dev
-```
+Suggested hosts: **Railway / Render / Fly.io** (API) + **Vercel** (web).
+
+Full guide: [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)
 
 ---
 

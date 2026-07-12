@@ -5,7 +5,7 @@ import { Bell } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { io, Socket } from 'socket.io-client';
 import { useAuth } from '@/lib/auth-context';
-import { apiRequest, getWsUrl } from '@/lib/api-client';
+import { apiRequest, WS_URL } from '@/lib/api-client';
 import { Button, cn } from '@tenantforge/ui';
 
 interface Notification {
@@ -55,7 +55,7 @@ export function NotificationBell() {
     }
 
     let socket: Socket | null = null;
-    socket = io(`${getWsUrl()}/notifications`, {
+    socket = io(`${WS_URL}/notifications`, {
       auth: { token: accessToken },
     });
 
