@@ -1,0 +1,69 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: tenantforge
+          POSTGRES_PASSWORD: tenantforge
+          POSTGRES_DB: tenantforge
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      DATABASE_URL: postgresql://tenantforge:tenantforge@localhost:5432/tenantforge?schema=public
+      JWT_ACCESS_SECRET: ci-access-secret-minimum-32-characters-long
+      JWT_REFRESH_SECRET: ci-refresh-secret-minimum-32-characters-long
+      REDIS_URL: redis://localhost:6379
+      CORS_ORIGIN: http://localhost:3000
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9.15.0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build packages
+        run: pnpm --filter @tenantforge/validation build
+
+      - name: Generate Prisma client
+        run: pnpm --filter @tenantforge/api db:generate
+
+      - name: Run migrations
+        run: pnpm --filter @tenantforge/api exec prisma migrate deploy
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Test API
+        run: pnpm --filter @tenantforge/api test
+
+      - name: Build API
+        run: pnpm --filter @tenantforge/api build
+
+      - name: Build Web
+        run: pnpm --filter @tenantforge/web build

@@ -1,0 +1,284 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --primary: 221.2 83.2% 53.3%;
+  --primary-foreground: 210 40% 98%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --border: 214.3 31.8% 91.4%;
+  --destructive: 0 84.2% 60.2%;
+  --radius: 0.5rem;
+}
+
+html {
+  overflow-x: clip;
+}
+
+body {
+  @apply bg-white text-slate-900 antialiased;
+  overflow-x: clip;
+}
+
+.landing-page {
+  overflow-x: clip;
+}
+
+.landing-page [data-marquee] {
+  contain: layout style paint;
+}
+
+.landing-page [data-hero-bg] {
+  contain: layout style paint;
+  isolation: isolate;
+}
+
+.landing-feature-icon,
+.landing-step-icon {
+  will-change: background-color, color, box-shadow, transform;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s ease,
+    ring-color 0.3s ease;
+}
+
+.landing-feature-icon [data-feature-icon-svg],
+.landing-step-icon [data-step-icon-svg] {
+  transition: transform 0.35s ease, opacity 0.3s ease;
+}
+
+.group:hover .landing-feature-icon,
+.group:hover .landing-step-icon {
+  transform: scale(1.1);
+}
+
+.group:hover .landing-feature-icon [data-feature-icon-svg],
+.group:hover .landing-step-icon [data-step-icon-svg] {
+  transform: scale(1.14);
+}
+
+.landing-marquee-pill {
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.35s ease,
+    transform 0.3s ease;
+}
+
+.landing-marquee-pill:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.28);
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgb(241, 245, 249);
+  box-shadow: 0 0 28px rgba(99, 102, 241, 0.22);
+}
+
+.landing-marquee-pill:hover [data-marquee-icon] {
+  transform: scale(1.22);
+  filter: brightness(1.35) drop-shadow(0 0 8px var(--pill-glow, #6366f1));
+  opacity: 1;
+}
+
+.landing-marquee-pill[data-stack-color]:hover {
+  box-shadow: 0 0 32px color-mix(in srgb, var(--pill-glow) 35%, transparent);
+}
+
+.landing-marquee-pill[data-stack-color='E0234E'] { --pill-glow: #e0234e; }
+.landing-marquee-pill[data-stack-color='FFFFFF'] { --pill-glow: #a5b4fc; }
+.landing-marquee-pill[data-stack-color='4169E1'] { --pill-glow: #4169e1; }
+.landing-marquee-pill[data-stack-color='FF4438'] { --pill-glow: #ff4438; }
+.landing-marquee-pill[data-stack-color='635BFF'] { --pill-glow: #635bff; }
+.landing-marquee-pill[data-stack-color='2496ED'] { --pill-glow: #2496ed; }
+.landing-marquee-pill[data-stack-color='FF1E56'] { --pill-glow: #ff1e56; }
+.landing-marquee-pill[data-stack-color='3178C6'] { --pill-glow: #3178c6; }
+
+.landing-aurora-beam {
+  position: absolute;
+  width: 140%;
+  height: 55%;
+  left: -20%;
+  filter: blur(72px);
+  will-change: transform;
+  opacity: 0.65;
+}
+
+.landing-aurora-beam-primary {
+  top: -8%;
+  background: linear-gradient(
+    108deg,
+    transparent 28%,
+    rgba(59, 130, 246, 0.38) 48%,
+    rgba(99, 102, 241, 0.28) 58%,
+    transparent 78%
+  );
+  animation: landing-aurora-drift-primary 20s ease-in-out infinite alternate;
+}
+
+.landing-aurora-beam-secondary {
+  top: 6%;
+  opacity: 0.5;
+  background: linear-gradient(
+    72deg,
+    transparent 32%,
+    rgba(139, 92, 246, 0.32) 50%,
+    rgba(59, 130, 246, 0.18) 62%,
+    transparent 82%
+  );
+  animation: landing-aurora-drift-secondary 24s ease-in-out infinite alternate;
+}
+
+.landing-aurora-beam-accent {
+  top: 18%;
+  height: 42%;
+  opacity: 0.42;
+  background: linear-gradient(
+    95deg,
+    transparent 36%,
+    rgba(34, 211, 238, 0.22) 52%,
+    rgba(139, 92, 246, 0.16) 64%,
+    transparent 84%
+  );
+  animation: landing-aurora-drift-accent 16s ease-in-out infinite alternate;
+}
+
+.landing-aurora-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+}
+
+@keyframes landing-aurora-drift-primary {
+  0% {
+    transform: translate3d(-4%, 0, 0) rotate(-3deg) scale(1);
+  }
+  100% {
+    transform: translate3d(6%, 3%, 0) rotate(4deg) scale(1.06);
+  }
+}
+
+@keyframes landing-aurora-drift-secondary {
+  0% {
+    transform: translate3d(5%, -2%, 0) rotate(2deg) scale(1.02);
+  }
+  100% {
+    transform: translate3d(-7%, 4%, 0) rotate(-5deg) scale(1.08);
+  }
+}
+
+@keyframes landing-aurora-drift-accent {
+  0% {
+    transform: translate3d(-3%, 2%, 0) rotate(-2deg) scale(1);
+  }
+  100% {
+    transform: translate3d(5%, -3%, 0) rotate(3deg) scale(1.05);
+  }
+}
+
+.landing-page [data-floating-icon] {
+  animation: landing-float 4.5s ease-in-out infinite;
+}
+
+.landing-page.landing-gsap-active [data-floating-icon] {
+  animation: none;
+}
+
+.landing-page [data-marquee-track] {
+  animation: landing-marquee-scroll 32s linear infinite;
+}
+
+.landing-page.landing-gsap-active [data-marquee-track] {
+  animation: none;
+}
+
+.landing-page [data-marquee-icon] {
+  transition: transform 0.35s ease, filter 0.35s ease, opacity 0.3s ease;
+}
+
+.landing-page [data-preview-glow] {
+  animation: landing-preview-glow 3.5s ease-in-out infinite alternate;
+}
+
+.landing-page.landing-gsap-active [data-preview-glow] {
+  animation: none;
+}
+
+.landing-page [data-aurora-glow] {
+  animation: landing-aurora-glow-pulse 5s ease-in-out infinite alternate;
+}
+
+.landing-page.landing-gsap-active [data-aurora-glow] {
+  animation: none;
+}
+
+@keyframes landing-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes landing-marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes landing-preview-glow {
+  0% {
+    opacity: 0.28;
+  }
+  100% {
+    opacity: 0.55;
+  }
+}
+
+@keyframes landing-aurora-glow-pulse {
+  0% {
+    transform: translateX(-50%) scale(1);
+    opacity: 0.35;
+  }
+  100% {
+    transform: translateX(-50%) scale(1.12);
+    opacity: 0.55;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-aurora-beam,
+  .landing-page [data-aurora-ray],
+  .landing-page [data-aurora-glow],
+  .landing-page [data-floating-icon],
+  .landing-page [data-marquee-track],
+  .landing-page [data-preview-glow] {
+    animation: none !important;
+  }
+
+  .landing-feature-icon,
+  .landing-step-icon,
+  .landing-marquee-pill,
+  .landing-marquee-pill [data-marquee-icon],
+  .landing-feature-icon [data-feature-icon-svg],
+  .landing-step-icon [data-step-icon-svg] {
+    transition: none !important;
+  }
+
+  .group:hover .landing-feature-icon,
+  .group:hover .landing-step-icon,
+  .group:hover .landing-feature-icon [data-feature-icon-svg],
+  .group:hover .landing-step-icon [data-step-icon-svg],
+  .landing-marquee-pill:hover,
+  .landing-marquee-pill:hover [data-marquee-icon] {
+    transform: none;
+  }
+}
