@@ -23,7 +23,7 @@ pnpm db:seed      # optional demo data
 
 ## 2. API (Railway)
 
-1. Connect GitHub repo `hammouda997/tenantforge`.
+1. Connect GitHub repo `hammouda997/TenantForge`.
 2. Set root directory to `apps/api` or use Docker:
    - Dockerfile: `docker/Dockerfile.api`
    - Build context: repository root
@@ -76,7 +76,9 @@ NEXT_PUBLIC_STRIPE_PRICE_PRO=price_...
 
 ## GitHub setup
 
-1. Push to `github.com/hammouda997/tenantforge`
-2. Pin repos on profile: tenantforge, nestjs-tenant-guard, next-saas-starter-ui, saas-docker-ci-kit
-3. Enable GitHub Actions (CI workflow included)
+Repo: https://github.com/hammouda997/TenantForge
+
+1. Code is on `main` — clone with `git clone https://github.com/hammouda997/TenantForge.git`
+2. Pin on your profile when ready: `TenantForge` (and satellite repos if published)
+3. Confirm GitHub Actions is enabled (CI workflow is in `.github/workflows/ci.yml`)
 4. Add repo topics: `saas`, `multi-tenant`, `nestjs`, `nextjs`, `typescript`, `stripe`

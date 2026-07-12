@@ -2,7 +2,7 @@
 
 **Production-grade multi-tenant SaaS starter** — NestJS API, Next.js App Router, Prisma, Stripe billing, RBAC, audit logs, and real-time notifications in one Turborepo.
 
-[![CI](https://github.com/hammouda997/tenantforge/actions/workflows/ci.yml/badge.svg)](https://github.com/hammouda997/tenantforge/actions/workflows/ci.yml)
+[![CI](https://github.com/hammouda997/TenantForge/actions/workflows/ci.yml/badge.svg)](https://github.com/hammouda997/TenantForge/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![NestJS](https://img.shields.io/badge/NestJS-API-E0234E?logo=nestjs&logoColor=white)](https://nestjs.com/)
@@ -62,8 +62,8 @@ Clone it, seed it, and walk through a complete multi-tenant product in under fiv
 ### 1. Clone & install
 
 ```bash
-git clone https://github.com/hammouda997/tenantforge.git
-cd tenantforge
+git clone https://github.com/hammouda997/TenantForge.git
+cd TenantForge
 pnpm install
 ```
 

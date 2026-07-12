@@ -183,7 +183,7 @@ export default function LandingPage() {
               </Button>
             </Link>
             <a
-              href="https://github.com/hammouda997/tenantforge"
+              href="https://github.com/hammouda997/TenantForge"
               target="_blank"
               rel="noopener noreferrer"
             >

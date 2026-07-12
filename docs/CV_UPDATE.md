@@ -4,7 +4,7 @@ Add this to your CV after pushing TenantForge to GitHub and deploying the live d
 
 ---
 
-**TenantForge — Open-Source Multi-Tenant SaaS Platform** · [GitHub](https://github.com/hammouda997/tenantforge) · [Live Demo](https://tenantforge.vercel.app)  
+**TenantForge — Open-Source Multi-Tenant SaaS Platform** · [GitHub](https://github.com/hammouda997/TenantForge) · [Live Demo](https://tenantforge.vercel.app)  
 *Jan 2026 – Present*
 
 - Architected open-source monorepo platform (NestJS, Next.js, Prisma, Redis, Stripe) with org-scoped RBAC and immutable audit logging.
@@ -28,7 +28,7 @@ Building open-source SaaS infrastructure.
 
 ## Featured projects
 
-- [TenantForge](https://github.com/hammouda997/tenantforge) — Multi-tenant SaaS platform (NestJS + Next.js + Stripe)
+- [TenantForge](https://github.com/hammouda997/TenantForge) — Multi-tenant SaaS platform (NestJS + Next.js + Stripe)
 - [nestjs-tenant-guard](https://github.com/hammouda997/nestjs-tenant-guard) — NestJS tenant isolation guards
 - [next-saas-starter-ui](https://github.com/hammouda997/next-saas-starter-ui) — Next.js SaaS UI shell
 - [EasyPaie](...) — Payroll management SaaS
@@ -41,7 +41,7 @@ Building open-source SaaS infrastructure.
 
 ## Pin these repos (in order)
 
-1. tenantforge
+1. TenantForge
 2. nestjs-tenant-guard
 3. next-saas-starter-ui
 4. saas-docker-ci-kit

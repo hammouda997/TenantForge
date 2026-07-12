@@ -5,8 +5,8 @@ Thank you for your interest in contributing.
 ## Development setup
 
 ```bash
-git clone https://github.com/hammouda997/tenantforge.git
-cd tenantforge
+git clone https://github.com/hammouda997/TenantForge.git
+cd TenantForge
 pnpm install
 cp apps/api/.env.example apps/api/.env
 cp apps/web/.env.example apps/web/.env.local
